@@ -21,7 +21,7 @@ const Blogs = () => {
             img: "https://res.cloudinary.com/dxupqwg5l/image/upload/v1708695429/ivansanmartin.github.io/rboo0hymusg4q6skh0be.png",
             description:
                 "First steps with Docker, creating containers, volumes, networks, and testing our application with Postman and MongoDB.",
-            url: "/blog/firsts-steps-docker",
+            url: "https://ivans-web.vercel.app/blog/firsts-steps-docker",
             created_at: "12-02-2024",
             button: "View",
             last: false
@@ -32,7 +32,7 @@ const Blogs = () => {
             img: "https://res.cloudinary.com/dxupqwg5l/image/upload/v1708540288/docker-compose/evbpvkp81oelvzkjfqvv.jpg",
             description:
                 "Creating our own images and defining multi-container applications with Docker Compose.",
-            url: "/blog/docker-compose-and-dockerfile",
+            url: "https://ivans-web.vercel.app/blog/docker-compose-and-dockerfile",
             created_at: "27-02-2024",
             button: "View",
             last: false
