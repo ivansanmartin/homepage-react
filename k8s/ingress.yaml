@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: homepage-ingress
-  namespace: #--
+  namespace: ivansanmartin
 spec:
   ingressClassName: nginx
   rules:
@@ -15,4 +15,4 @@ spec:
               service:
                 name: homepage-service
                 port:
-                  number: #--
+                  number: 80

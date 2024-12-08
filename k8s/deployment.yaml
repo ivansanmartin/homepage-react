@@ -2,9 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: homepage-deployment
-  namespace: #--
+  namespace: ivansanmartin
 spec:
-  replicas: #--
+  replicas: 1
   selector:
     matchLabels:
       app: homepage-label
@@ -14,5 +14,6 @@ spec:
         app: homepage-label
     spec:
       containers:
-        - name: #--
-          image: #--
+        - name: homepage
+          image: homepage:teddt
+          imagePullPolicy: IfNotPresent
