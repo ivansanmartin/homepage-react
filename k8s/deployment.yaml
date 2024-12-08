@@ -15,5 +15,5 @@ spec:
     spec:
       containers:
         - name: homepage
-          image: homepage:teddt
+          image: homepage:teddy
           imagePullPolicy: IfNotPresent
