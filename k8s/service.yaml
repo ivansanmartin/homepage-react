@@ -6,7 +6,7 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-    app: nginx-pod-label
+    app: homepage-label
   ports:
     - protocol: TCP
       port: #--
