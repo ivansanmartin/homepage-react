@@ -17,3 +17,6 @@ spec:
         - name: homepage
           image: homepage:teddy
           imagePullPolicy: IfNotPresent
+          securityContext:
+            runAsUser: 0
+
