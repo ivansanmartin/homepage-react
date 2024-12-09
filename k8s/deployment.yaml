@@ -17,6 +17,8 @@ spec:
         - name: homepage
           image: homepage:teddy
           imagePullPolicy: IfNotPresent
+          securityContext:
+            runAsUser: 0
           resources:
             limits:
               cpu: 200m
@@ -24,3 +26,4 @@ spec:
             requests:
               cpu: 100m
               memory: "32Mi"
+
