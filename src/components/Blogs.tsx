@@ -23,7 +23,7 @@ const Blogs = () => {
                 "First steps with Docker, creating containers, volumes, networks, and testing our application with Postman and MongoDB.",
             url: "https://ivans-web.vercel.app/blog/firsts-steps-docker",
             created_at: "12-02-2024",
-            button: "View",
+            button: "Not Available",
             last: false
         },
         {
@@ -34,20 +34,9 @@ const Blogs = () => {
                 "Creating our own images and defining multi-container applications with Docker Compose.",
             url: "https://ivans-web.vercel.app/blog/docker-compose-and-dockerfile",
             created_at: "27-02-2024",
-            button: "View",
+            button: "Not Available",
             last: false
         },
-        // {
-        //     id: uuidv4(),
-        //     name: "OpenAI Batch API with Python",
-        //     img: "https://static.vecteezy.com/system/resources/previews/026/766/386/non_2x/search-no-result-data-document-or-file-not-found-concept-illustration-flat-design-eps10-modern-graphic-element-for-landing-page-empty-state-ui-infographic-icon-vector.jpg",
-        //     description:
-        //         "Exploring the Batch API of OpenAI",
-        //     url: "/blog/docker-compose-and-dockerfile",
-        //     created_at: "00-00-0000",
-        //     button: "View",
-        //     last: false
-        // }
     ])
 
   return (
@@ -67,7 +56,7 @@ const Blogs = () => {
                     <div className="img-reference">
                         <p className=" mt-3 text-secondary fst-italic">Publish date: <span className="text-decoration-underline">{blo.created_at}</span></p>
                     </div>
-                    <a href={blo.url} className="btn-main text-center w-50 mt-3">{blo.button}</a>
+                    <a className="btn-main text-center w-50 mt-3" onClick={() => alert('TECHNIQUE PAUSE')}>{blo.button}</a>
                 </div>
             </div>
             ))
