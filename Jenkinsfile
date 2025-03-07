@@ -1,8 +1,22 @@
 pipeline {
-
   agent {
     kubernetes {
-      yamlFile 'kaniko-builder.yaml'
+        inheritFrom 'kaniko'
+        defaultContainer 'kaniko'
+        yaml """
+        apiVersion: v1
+        kind: Pod
+        metadata:
+        spec:
+          containers:
+          - name: kaniko
+            image: 'gcr.io/kaniko-project/executor:debug'
+            command:
+            - sleep
+            args:
+            - infinity
+          restartPolicy: Never
+        """
     }
   }
 
