@@ -9,8 +9,8 @@ pipeline {
   environment {
         APP_NAME = "homepage-react"
         RELEASE = "1.0.0"
-        DOCKER_USER = "user"
-        DOCKER_PASS = 'pass'
+        DOCKER_USER = credentials('docker-username')
+        DOCKER_PASS = credentials('docker-password')
         IMAGE_NAME = "${DOCKER_USER}" + "/" + "${APP_NAME}"
         IMAGE_TAG = "${RELEASE}-${BUILD_NUMBER}"
 
@@ -26,7 +26,7 @@ pipeline {
 
     stage("Checkout from SCM"){
             steps {
-                git branch: 'main', credentialsId: 'github', url: 'https://github.com/dmancloud/complete-prodcution-e2e-pipeline'
+                git branch: 'main', credentialsId: 'github', url: 'https://github.com/ivansanmartin/homepage-react'
             }
 
         }
