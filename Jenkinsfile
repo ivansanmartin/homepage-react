@@ -24,7 +24,7 @@ pipeline {
     }
   }
   environment {
-    APP_NAME = "homepage-react"
+    APP_NAME = "homepage"
     RELEASE = "1.0.0"
     HARBOR_REGISTRY = "192.168.1.200:30002"
     HARBOR_PROJECT = "ivansanmartin"
