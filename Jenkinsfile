@@ -53,10 +53,10 @@ pipeline {
         }
       }
     }
-    
-    stage("Configure Docker Auth") {
+
+    stage('Configure Harbor Auth') {
       steps {
-        container(name: 'kaniko', shell: '/busybox/sh') {
+          container(name: 'kaniko', shell: '/busybox/sh') {
           sh '''#!/busybox/sh
               mkdir -p /kaniko/.docker
               chmod 777 /kaniko/.docker
@@ -64,9 +64,10 @@ pipeline {
               ls -la /kaniko/.docker/
               cat /kaniko/.docker/config.json
           '''
-        }
+          }
       }
     }
+
     
     stage('Build & Push with Kaniko') {
       steps {
