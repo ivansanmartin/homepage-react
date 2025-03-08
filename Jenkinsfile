@@ -24,7 +24,7 @@ pipeline {
     }
   }
   environment {
-    APP_NAME = "homepage"
+    APP_NAME = "homepage-react"
     RELEASE = "1.0.0"
     HARBOR_REGISTRY = "192.168.1.200:30002"
     HARBOR_PROJECT = "ivansanmartin"
@@ -60,7 +60,7 @@ pipeline {
           sh '''#!/busybox/sh
             mkdir -p /kaniko/.docker
             chmod 777 /kaniko/.docker
-            echo '{"auths":{"'"${HARBOR_REGISTRY}"'":{"username":"'"${HARBOR_USERNAME}"'","password":"'"${HARBOR_PASSWORD}"'"}}}' > /kaniko/.docker/config.json
+            echo '{"auths":{"'"${HARBOR_REGISTRY}"'":{"auth":"'`echo -n ${HARBOR_USERNAME}:${HARBOR_PASSWORD} | base64`'"}}}' > /kaniko/.docker/config.json
             ls -la /kaniko/.docker/
             cat /kaniko/.docker/config.json
           '''
