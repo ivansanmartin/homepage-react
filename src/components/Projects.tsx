@@ -195,28 +195,6 @@ const Projects = () => {
             created_at: "07/03/2024",
             last: true
         },
-        // {<
-        //     id: uuidv4(),
-        //     name: "openai-batch-api",
-        //     img: "https://static.vecteezy.com/system/resources/previews/026/766/386/non_2x/search-no-result-data-document-or-file-not-found-concept-illustration-flat-design-eps10-modern-graphic-element-for-landing-page-empty-state-ui-infographic-icon-vector.jpg",
-        //     description:
-        //         "Python Fast API to custom interact with OpenAI Batch API",
-        //     technologies: ["python", "openai", "docker"],
-        //     url: "https://github.com/ivansanmartin/openai-batch-api",
-        //     created_at: "24/06/2024",
-        //     last: true
-        // },
-        // {
-        //     id: uuidv4(),
-        //     name: "openai-batch-springboot",
-        //     img: "https://static.vecteezy.com/system/resources/previews/026/766/386/non_2x/search-no-result-data-document-or-file-not-found-concept-illustration-flat-design-eps10-modern-graphic-element-for-landing-page-empty-state-ui-infographic-icon-vector.jpg",
-        //     description:
-        //         "First Spring Boot application for use openai-batch-api",
-        //     technologies: ["java", "springboot", "docker", "html", "css"],
-        //     url: "",
-        //     created_at: "00/00/0000",
-        //     last: true
-        // }
     ])
 
   return (
