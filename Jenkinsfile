@@ -53,21 +53,20 @@ pipeline {
         }
       }
     }
-
-    stage('Configure Harbor Auth') {
+    
+    stage('Configure Docker Auth') {
       steps {
-          container(name: 'kaniko', shell: '/busybox/sh') {
+        container(name: 'kaniko', shell: '/busybox/sh') {
           sh '''#!/busybox/sh
-              mkdir -p /kaniko/.docker
-              chmod 777 /kaniko/.docker
-              echo "{\"auths\":{\"${HARBOR_REGISTRY}\":{\"username\":\"${HARBOR_USERNAME}\",\"password\":\"${HARBOR_PASSWORD}\",\"auth\":\"$(echo -n ${HARBOR_USERNAME}:${HARBOR_PASSWORD} | base64)\"}}}" > /kaniko/.docker/config.json
-              ls -la /kaniko/.docker/
-              cat /kaniko/.docker/config.json
+            mkdir -p /kaniko/.docker
+            chmod 777 /kaniko/.docker
+            echo '{"auths":{"192.168.1.200:30002":{"username":"admin","password":"Harbor12345"}}}' > /kaniko/.docker/config.json
+            ls -la /kaniko/.docker/
+            cat /kaniko/.docker/config.json
           '''
-          }
+        }
       }
     }
-
     
     stage('Build & Push with Kaniko') {
       steps {
