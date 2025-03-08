@@ -32,6 +32,7 @@ pipeline {
     HARBOR_PASSWORD = credentials('harbor-password')
     IMAGE_NAME = "${HARBOR_REGISTRY}/${HARBOR_PROJECT}/${APP_NAME}"
     IMAGE_TAG = "${RELEASE}-${BUILD_NUMBER}"
+    GIT_URL = "https://github.com/ivansanmartin/homepage-react"
   }
   
   stages {
@@ -43,11 +44,12 @@ pipeline {
     
     stage("Checkout from SCM") {
       steps {
-        container(name: 'git') {
-          sh """
-            git clone https://github.com/ivansanmartin/homepage-react.git .
-            git checkout main
-          """
+        container('kaniko') {
+          checkout([$class: 'GitSCM',
+                    branches: [[name: 'main']],
+                    userRemoteConfigs: [[url: "${GIT_URL}", 
+                                         credentialsId: 'jenkins-github']]
+          ])
         }
       }
     }
