@@ -1,8 +1,6 @@
 pipeline {
   agent {
     kubernetes {
-      inheritFrom 'kaniko'
-      defaultContainer 'kaniko'
       yaml """
       apiVersion: v1
       kind: Pod
@@ -15,41 +13,57 @@ pipeline {
           - sleep
           args:
           - infinity
-          volumeMounts:
-          - name: jenkins-docker-cfg
-            mountPath: /kaniko/.docker/
+        - name: git
+          image: 'alpine/git:latest'
+          command:
+          - sleep
+          args:
+          - infinity
         restartPolicy: Never
-        volumes:
-        - name: jenkins-docker-cfg
-          secret:
-            secretName: harbor-credentials
       """
     }
   }
-
   environment {
-        APP_NAME = "homepage-react"
-        RELEASE = "1.0.0"
-        HARBOR_REGISTRY = "192.168.1.200:30002"
-        HARBOR_PROJECT = "ivansanmartin"                
-        IMAGE_NAME = "${HARBOR_REGISTRY}/${HARBOR_PROJECT}/${APP_NAME}"
-        IMAGE_TAG = "${RELEASE}-${BUILD_NUMBER}"
-    }
-
+    APP_NAME = "homepage-react"
+    RELEASE = "1.0.0"
+    HARBOR_REGISTRY = "192.168.1.200:30002"
+    HARBOR_PROJECT = "ivansanmartin"
+    HARBOR_USERNAME = credentials('harbor-username')
+    HARBOR_PASSWORD = credentials('harbor-password')
+    IMAGE_NAME = "${HARBOR_REGISTRY}/${HARBOR_PROJECT}/${APP_NAME}"
+    IMAGE_TAG = "${RELEASE}-${BUILD_NUMBER}"
+  }
+  
   stages {
-
     stage("Cleanup Workspace") {
       steps {
         cleanWs()
       }
     }
-
-    stage("Checkout from SCM"){
-        steps {
-            git branch: 'main', credentialsId: 'github', url: 'https://github.com/ivansanmartin/homepage-react'
+    
+    stage("Checkout from SCM") {
+      steps {
+        container(name: 'git') {
+          sh """
+            git clone https://github.com/ivansanmartin/homepage-react.git .
+            git checkout main
+          """
         }
+      }
     }
-
+    
+    stage('Configure Docker Auth') {
+      steps {
+        container(name: 'kaniko', shell: '/busybox/sh') {
+          sh '''#!/busybox/sh
+            mkdir -p /kaniko/.docker
+            echo '{"auths":{"'"${HARBOR_REGISTRY}"'":{"username":"'"${HARBOR_USERNAME}"'","password":"'"${HARBOR_PASSWORD}"'"}}}' > /kaniko/.docker/config.json
+            cat /kaniko/.docker/config.json
+          '''
+        }
+      }
+    }
+    
     stage('Build & Push with Kaniko') {
       steps {
         container(name: 'kaniko', shell: '/busybox/sh') {
