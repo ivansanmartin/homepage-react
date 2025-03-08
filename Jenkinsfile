@@ -59,7 +59,9 @@ pipeline {
         container(name: 'kaniko', shell: '/busybox/sh') {
           sh '''#!/busybox/sh
             mkdir -p /kaniko/.docker
+            chmod 777 /kaniko/.docker
             echo '{"auths":{"'"${HARBOR_REGISTRY}"'":{"username":"'"${HARBOR_USERNAME}"'","password":"'"${HARBOR_PASSWORD}"'"}}}' > /kaniko/.docker/config.json
+            ls -la /kaniko/.docker/
             cat /kaniko/.docker/config.json
           '''
         }
@@ -74,7 +76,12 @@ pipeline {
               --dockerfile `pwd`/Dockerfile \
               --context `pwd` \
               --destination=${HARBOR_REGISTRY}/${HARBOR_PROJECT}/${APP_NAME}:${IMAGE_TAG} \
-              --destination=${HARBOR_REGISTRY}/${HARBOR_PROJECT}/${APP_NAME}:latest
+              --destination=${HARBOR_REGISTRY}/${HARBOR_PROJECT}/${APP_NAME}:latest \
+              --insecure \
+              --insecure-pull \
+              --skip-tls-verify \
+              --verbosity=debug
+              
           '''
         }
       }
