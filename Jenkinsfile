@@ -60,7 +60,7 @@ pipeline {
           sh '''#!/busybox/sh
             mkdir -p /kaniko/.docker
             chmod 777 /kaniko/.docker
-            echo '{"auths":{"192.168.1.200:30002":{"username":"admin","password":"Harbor12345"}}}' > /kaniko/.docker/config.json
+            echo '{"auths":{"192.168.1.200:30002":{"username":"'"${HARBOR_USERNAME}"'","password":"'"${HARBOR_PASSWORD}"'"}}}'  > /kaniko/.docker/config.json
             ls -la /kaniko/.docker/
             cat /kaniko/.docker/config.json
           '''
