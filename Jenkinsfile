@@ -101,7 +101,7 @@ pipeline {
         container('helm') {
           script {
             sh """
-              helm upgrade --install ${APP_NAME} ./helm \
+              helm upgrade --install ${APP_NAME} ${HELM_CHART_PATH} \
                 --namespace ${NAMESPACE} \
                 --create-namespace \
                 --set image.repository=${HARBOR_REGISTRY}/${HARBOR_PROJECT}/${APP_NAME} \
