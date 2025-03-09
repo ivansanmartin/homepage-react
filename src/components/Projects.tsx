@@ -131,6 +131,28 @@ const Projects = () => {
     const [project] = useState<Project[]>([
         {
             id: uuidv4(),
+            name: "url-shortener",
+            img: "",
+            description:
+                "A URL shortening service that creates shortened URLs with a 5-day expiration period. The service tracks click counts and provides metadata for each shortened URL.",
+            technologies: ["python", "mongodb"],
+            url: "https://github.com/ivansanmartin/url-shortener",
+            created_at: "01/01/2025",
+            last: true
+        },
+        {
+            id: uuidv4(),
+            name: "api-key-manager",
+            img: "",
+            description:
+                "The API Key Manager Service provides a complete solution for managing API keys, including creation, verification, and management of API references. It uses MongoDB for persistent storage and Redis for caching verification results.",
+            technologies: ["python", "mongodb", "redis"],
+            url: "https://github.com/ivansanmartin/api-key-manager",
+            created_at: "01/01/2025",
+            last: true
+        },
+        {
+            id: uuidv4(),
             name: "Sport Gym App",
             img: "https://res.cloudinary.com/dxupqwg5l/image/upload/f_auto,q_auto/v1/ivansanmartin.github.io/nl1aqvmir1m0mkm9aicy",
             description:
