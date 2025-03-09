@@ -33,6 +33,9 @@ pipeline {
     IMAGE_NAME = "${HARBOR_REGISTRY}/${HARBOR_PROJECT}/${APP_NAME}"
     IMAGE_TAG = "${RELEASE}-${BUILD_NUMBER}"
     GIT_URL = "https://github.com/ivansanmartin/homepage-react"
+    HELM_CHART_PATH = "./k8s"
+    NAMESPACE = "ivansanmartin"
+    RELEASE_NAME = "homepage"
   }
   
   stages {
@@ -86,5 +89,24 @@ pipeline {
         }
       }
     }
+
+    stage('Deploy with Helm') {
+      steps {
+        container('helm') {
+          script {
+            sh """
+              helm upgrade --install ${APP_NAME} ./helm \
+                --namespace ${NAMESPACE} \
+                --create-namespace \
+                --set image.repository=${HARBOR_REGISTRY}/${HARBOR_PROJECT}/${APP_NAME} \
+                --set image.tag=${IMAGE_TAG} \
+                --wait \
+                --timeout 5m
+            """
+          }
+        }
+      }
+    }
+    
   }
 }
