@@ -13,6 +13,12 @@ pipeline {
           - sleep
           args:
           - infinity
+        - name: helm
+          image: 'mirror.gcr.io/alpine/helm'
+          command:
+          - sleep
+          args:
+          - infinity
         - name: git
           image: 'alpine/git:latest'
           command:
@@ -107,6 +113,6 @@ pipeline {
         }
       }
     }
-    
+
   }
 }
