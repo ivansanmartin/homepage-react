@@ -36,8 +36,7 @@ function App() {
 
         <section className='presentation d-flex flex-column align-items-start justify-content-center mt-4 gap-4'>
           <p className='text-break text-wrap'>
-            TEST
-            I am passionate about programming with a specialization in backend development. I enjoy learning and applying new knowledge to innovative projects. I excel in teamwork and effective communication in software development.
+            TEST I am passionate about programming with a specialization in backend development. I enjoy learning and applying new knowledge to innovative projects. I excel in teamwork and effective communication in software development.
           </p>
 
           <div className='d-flex align-items-center gap-3 flex-wrap'>
