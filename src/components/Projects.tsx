@@ -225,7 +225,13 @@ const Projects = () => {
             project.map((pro) => (
 
             <div className="card card-1" key={pro.id}>   
-                <img src={pro.img} alt="" />            
+                {
+                    pro.img ? (
+                        <img src={pro.img} alt="" />    
+                    )
+                    :
+                    <div className='alert alert-warning'></div>
+                }        
                 <div className="body-card d-flex flex-column text-wrap text-break p-1">
                     <div>
                         <h2 className="fw-semibold">{pro.name}</h2>
