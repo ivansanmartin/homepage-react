@@ -224,13 +224,15 @@ const Projects = () => {
         {
             project.map((pro) => (
 
-            <div className="card card-1" key={pro.id}>   
+            <div className="projects card card-1" key={pro.id}>   
                 {
                     pro.img ? (
                         <img src={pro.img} alt="" />    
                     )
                     :
-                    <div className='alert alert-warning'></div>
+                    <div className='no-image alert alert-warning d-flex justify-content-center align-items-center'>
+                        <p className='text-secondary'>{pro.name}</p>
+                    </div>
                 }        
                 <div className="body-card d-flex flex-column text-wrap text-break p-1">
                     <div>

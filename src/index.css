@@ -151,6 +151,10 @@ h1 {
   align-items: center;
 }
 
+.projects .no-image {
+  height: 150px;
+}
+
 
 @keyframes fadeIn {
   from {
