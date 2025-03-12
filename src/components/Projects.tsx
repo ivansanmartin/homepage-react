@@ -153,14 +153,25 @@ const Projects = () => {
         },
         {
             id: uuidv4(),
-            name: "Sport Gym App",
-            img: "https://res.cloudinary.com/dxupqwg5l/image/upload/f_auto,q_auto/v1/ivansanmartin.github.io/nl1aqvmir1m0mkm9aicy",
+            name: "ivsm-ecommerce",
+            img: "https://res.cloudinary.com/dxupqwg5l/image/upload/v1721104642/ivansanmartin.github.io/syweir3idncdmczlvzwa.png",
             description:
-                "An application designed for use in gyms to have better control of routines and clients. Deployment done on Fly.io.",
-            technologies: ["nodejs", "express", "js", "css", "html", "bootstrap", "ejs", "mysql"],
-            url: "https://github.com/ivansanmartin/sport-gym-app",
-            created_at: "05/06/2023",
-            last: false
+                "ivsm-ecommerce is a long-term project to practice new technologies",
+            technologies: [],
+            url: "https://github.com/ivansanmartin/ivsm-ecommerce-info",
+            created_at: "07/03/2024",
+            last: true
+        },
+        {
+            id: uuidv4(),
+            name: "flash-cache",
+            img: "https://res.cloudinary.com/dxupqwg5l/image/upload/v1708626730/ivansanmartin.github.io/pfnzccnhqmh0vcxawinf.gif",
+            description:
+                "flash-cache is a testing tool to see the functioning of Redis using caching when consuming public or private APIs locally, speeding up response time.",
+            technologies: ["express", "nodejs", "react", "html", "css", "bootstrap", "redis", "docker"],
+            url: "https://github.com/ivansanmartin/flash-cache",
+            created_at: "23/01/2024",
+            last: true
         },
         {
             id: uuidv4(),
@@ -197,25 +208,14 @@ const Projects = () => {
         },
         {
             id: uuidv4(),
-            name: "flash-cache",
-            img: "https://res.cloudinary.com/dxupqwg5l/image/upload/v1708626730/ivansanmartin.github.io/pfnzccnhqmh0vcxawinf.gif",
+            name: "Sport Gym App",
+            img: "https://res.cloudinary.com/dxupqwg5l/image/upload/f_auto,q_auto/v1/ivansanmartin.github.io/nl1aqvmir1m0mkm9aicy",
             description:
-                "flash-cache is a testing tool to see the functioning of Redis using caching when consuming public or private APIs locally, speeding up response time.",
-            technologies: ["express", "nodejs", "react", "html", "css", "bootstrap", "redis", "docker"],
-            url: "https://github.com/ivansanmartin/flash-cache",
-            created_at: "23/01/2024",
-            last: true
-        },
-        {
-            id: uuidv4(),
-            name: "ivsm-ecommerce",
-            img: "https://res.cloudinary.com/dxupqwg5l/image/upload/v1721104642/ivansanmartin.github.io/syweir3idncdmczlvzwa.png",
-            description:
-                "ivsm-ecommerce is a long-term project to practice new technologies",
-            technologies: [],
-            url: "https://github.com/ivansanmartin/ivsm-ecommerce-info",
-            created_at: "07/03/2024",
-            last: true
+                "An application designed for use in gyms to have better control of routines and clients. Deployment done on Fly.io.",
+            technologies: ["nodejs", "express", "js", "css", "html", "bootstrap", "ejs", "mysql"],
+            url: "https://github.com/ivansanmartin/sport-gym-app",
+            created_at: "05/06/2023",
+            last: false
         },
     ])
 
