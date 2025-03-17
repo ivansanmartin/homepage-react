@@ -284,12 +284,12 @@ const Projects = () => {
 
                     <div className='d-flex flex-column gap-2'>
                         <a className="btn-main text-center w-50 d-flex justify-content-center align-items-center gap-2" href={pro.url_repository} target="_blank">
-                            See repository <i className="fa-regular fa-eye text-warning"></i>
+                            <small>Repository</small> <i className="fa-regular fa-eye text-warning"></i>
                         </a>
                         {
                             pro.url_web && (
                                 <a className="btn-main text-center w-50 d-flex justify-content-center align-items-center gap-2" href={pro.url_web} target="_blank">
-                                    Visit <i className="fa-solid fa-arrow-up-right-from-square text-warning"></i>
+                                    <small>Visit</small> <i className="fa-solid fa-arrow-up-right-from-square text-warning"></i>
                                 </a>
                             )
                         }
