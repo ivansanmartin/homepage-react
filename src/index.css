@@ -152,8 +152,9 @@ h1 {
 }
 
 .projects .no-image {
-  height: 150px;
+  height: 180px;
 }
+
 
 
 @keyframes fadeIn {

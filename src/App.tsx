@@ -6,6 +6,7 @@ function App() {
 
   const scrollToOutlet = () => {
     const outletSection = document.getElementById('outlet-section');
+
     if (outletSection) {
       outletSection.scrollIntoView({ behavior: 'smooth' });
     }
@@ -53,9 +54,9 @@ function App() {
         <nav className='d-flex flex-column align-items-center gap-5'>
           <h1 className="text-start fw-bold text-center">Navigation</h1>
           <ul className='d-flex p-0 list-unstyled flex-wrap'>
-            <li><Link to={'/projects'} className='btn-main' onClick={scrollToOutlet}>Projects</Link></li>
-            <li><Link to={'/blog'} className='btn-main' onClick={scrollToOutlet}>Blogs</Link></li>
-            <li><Link to={'/more'} className='btn-main' onClick={scrollToOutlet}>More</Link></li>
+            <li><Link to={'/projects'} className='btn-main' id='projects-button' onClick={scrollToOutlet}>Projects</Link></li>
+            <li><Link to={'/blog'} className='btn-main' id='blogs-button' onClick={scrollToOutlet}>Blogs</Link></li>
+            <li><Link to={'/more'} className='btn-main' id='blog-button' onClick={scrollToOutlet}>More</Link></li>
           </ul>
         </nav>
         
