@@ -233,7 +233,7 @@ const Projects = () => {
             description:
                 "ivsmPanel is an adaptable and attractive administrative layout for both large and small devices. Easily customize and extend to create unique administrative panels. Total versatility with a responsive design!",
             technologies: ["js", "html", "css", "bootstrap"],
-            url_repository: "/projects/ivsm-panel",
+            url_repository: "https://github.com/ivansanmartin/ivsm-panel",
             url_web: "",
             created_at: "23/01/2024",
             last: false
