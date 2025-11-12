@@ -19,7 +19,7 @@ RUN npm run build
 
 # Nginx
 
-FROM cgr.dev/chainguard/nginx:latest
+FROM nginx:stable-alpine
 
 COPY --from=build /app/dist /usr/share/nginx/html
 
