@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iván y Karla</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: url('https://res.cloudinary.com/dxupqwg5l/image/upload/v1762976655/ivan/IMG_2377_1_srpqyy.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 40px 30px;
+            text-align: center;
+            color: white;
+        }
+
+        .title {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            font-weight: normal;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .description {
+            font-size: 1.2em;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+
+        .collage-container {
+            padding: 40px;
+            background: #f8f9fa;
+        }
+
+        .collage {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .photo {
+            position: relative;
+            aspect-ratio: 1;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .photo:hover {
+            transform: translateY(-5px) rotate(2deg);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-size: 3em;
+            opacity: 0.8;
+        }
+
+        .photo:nth-child(1) {
+            grid-column: 1 / 3;
+            grid-row: 1 / 3;
+        }
+
+        .photo:nth-child(5) {
+            grid-column: 2 / 4;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 10px;
+            animation: zoomIn 0.3s ease;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            z-index: 1001;
+        }
+
+        .close-modal:hover {
+            color: #f5576c;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2em;
+            }
+
+            .description {
+                font-size: 1em;
+            }
+
+            .collage {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .photo:nth-child(1) {
+                grid-column: 1 / 3;
+                grid-row: 1 / 2;
+            }
+
+            .photo:nth-child(5) {
+                grid-column: 1 / 3;
+            }
+
+            .collage-container {
+                padding: 20px;
+            }
+
+            .close-modal {
+                top: 10px;
+                right: 20px;
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">De Iván, para tí</h1>
+            <p class="description">
+                Te amo mi amor ❤️
+            </p>
+        </div>
+
+        <div class="collage-container">
+            <div class="collage">
+                <div class="photo" onclick="openModal('https://res.cloudinary.com/dxupqwg5l/image/upload/v1762975980/ivan/IMG_0586_sdcgmj.jpg')">
+                    <div class="photo-placeholder"><img src="https://res.cloudinary.com/dxupqwg5l/image/upload/v1762975980/ivan/IMG_0586_sdcgmj.jpg" alt=""></div>
+                </div>
+                <div class="photo" onclick="openModal('https://res.cloudinary.com/dxupqwg5l/image/upload/v1762975979/ivan/IMG_3141_u7arp4.jpg')">
+                    <div class="photo-placeholder"><img src="https://res.cloudinary.com/dxupqwg5l/image/upload/v1762975979/ivan/IMG_3141_u7arp4.jpg" alt=""></div>
+                </div>
+                <div class="photo" onclick="openModal('https://res.cloudinary.com/dxupqwg5l/image/upload/v1762975972/ivan/IMG_3139_gylvlg.jpg')">
+                    <div class="photo-placeholder"><img src="https://res.cloudinary.com/dxupqwg5l/image/upload/v1762975972/ivan/IMG_3139_gylvlg.jpg" alt=""></div>
+                </div>
+                <div class="photo" onclick="openModal('https://res.cloudinary.com/dxupqwg5l/image/upload/v1762975972/ivan/IMG_3139_gylvlg.jpg')">
+                    <div class="photo-placeholder"><img src="https://res.cloudinary.com/dxupqwg5l/image/upload/v1762975972/ivan/IMG_3139_gylvlg.jpg" alt=""></div>
+                </div>
+                <div class="photo" onclick="openModal('https://res.cloudinary.com/dxupqwg5l/image/upload/v1762975972/ivan/IMG_0367_k02v10.jpg')">
+                    <div class="photo-placeholder"><img src="https://res.cloudinary.com/dxupqwg5l/image/upload/v1762975972/ivan/IMG_0367_k02v10.jpg" alt=""></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modalImage" alt="Imagen ampliada">
+    </div>
+
+    <script>
+        function openModal(imageSrc) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            modal.classList.add('active');
+            modalImg.src = imageSrc;
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
