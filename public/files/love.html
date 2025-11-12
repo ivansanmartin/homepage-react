@@ -26,6 +26,60 @@
             position: relative;
         }
 
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader {
+            width: 60px;
+            height: 60px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-top: 5px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        .loader-text {
+            color: white;
+            font-size: 1.2em;
+            margin-top: 20px;
+            font-weight: normal;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .main-content {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main-content.visible {
+            opacity: 1;
+        }
+
         body::before {
             content: '';
             position: absolute;
@@ -224,30 +278,37 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1 class="title">De Iván, para tí</h1>
-            <p class="description">
-                Te amo mi amor ❤️
-            </p>
-        </div>
+    <div class="preloader" id="preloader">
+        <div class="loader"></div>
+        <p class="loader-text">Cargando...</p>
+    </div>
 
-        <div class="collage-container">
-            <div class="collage">
-                <div class="photo" onclick="openModal('https://res.cloudinary.com/dxupqwg5l/image/upload/v1762975980/ivan/IMG_0586_sdcgmj.jpg')">
-                    <div class="photo-placeholder"><img src="https://res.cloudinary.com/dxupqwg5l/image/upload/v1762975980/ivan/IMG_0586_sdcgmj.jpg" alt=""></div>
-                </div>
-                <div class="photo" onclick="openModal('https://res.cloudinary.com/dxupqwg5l/image/upload/v1762975979/ivan/IMG_3141_u7arp4.jpg')">
-                    <div class="photo-placeholder"><img src="https://res.cloudinary.com/dxupqwg5l/image/upload/v1762975979/ivan/IMG_3141_u7arp4.jpg" alt=""></div>
-                </div>
-                <div class="photo" onclick="openModal('https://res.cloudinary.com/dxupqwg5l/image/upload/v1762975972/ivan/IMG_3139_gylvlg.jpg')">
-                    <div class="photo-placeholder"><img src="https://res.cloudinary.com/dxupqwg5l/image/upload/v1762975972/ivan/IMG_3139_gylvlg.jpg" alt=""></div>
-                </div>
-                <div class="photo" onclick="openModal('https://res.cloudinary.com/dxupqwg5l/image/upload/v1762975972/ivan/IMG_3139_gylvlg.jpg')">
-                    <div class="photo-placeholder"><img src="https://res.cloudinary.com/dxupqwg5l/image/upload/v1762975972/ivan/IMG_3139_gylvlg.jpg" alt=""></div>
-                </div>
-                <div class="photo" onclick="openModal('https://res.cloudinary.com/dxupqwg5l/image/upload/v1762975972/ivan/IMG_0367_k02v10.jpg')">
-                    <div class="photo-placeholder"><img src="https://res.cloudinary.com/dxupqwg5l/image/upload/v1762975972/ivan/IMG_0367_k02v10.jpg" alt=""></div>
+    <div class="main-content" id="mainContent">
+        <div class="container">
+            <div class="header">
+                <h1 class="title">De Iván, para tí</h1>
+                <p class="description">
+                    Te amo mi amor ❤️
+                </p>
+            </div>
+
+            <div class="collage-container">
+                <div class="collage">
+                    <div class="photo" onclick="openModal('https://res.cloudinary.com/dxupqwg5l/image/upload/v1762975980/ivan/IMG_0586_sdcgmj.jpg')">
+                        <div class="photo-placeholder"><img src="https://res.cloudinary.com/dxupqwg5l/image/upload/v1762975980/ivan/IMG_0586_sdcgmj.jpg" alt=""></div>
+                    </div>
+                    <div class="photo" onclick="openModal('https://res.cloudinary.com/dxupqwg5l/image/upload/v1762975979/ivan/IMG_3141_u7arp4.jpg')">
+                        <div class="photo-placeholder"><img src="https://res.cloudinary.com/dxupqwg5l/image/upload/v1762975979/ivan/IMG_3141_u7arp4.jpg" alt=""></div>
+                    </div>
+                    <div class="photo" onclick="openModal('https://res.cloudinary.com/dxupqwg5l/image/upload/v1762975972/ivan/IMG_3139_gylvlg.jpg')">
+                        <div class="photo-placeholder"><img src="https://res.cloudinary.com/dxupqwg5l/image/upload/v1762975972/ivan/IMG_3139_gylvlg.jpg" alt=""></div>
+                    </div>
+                    <div class="photo" onclick="openModal('https://res.cloudinary.com/dxupqwg5l/image/upload/v1762975972/ivan/IMG_0367_k02v10.jpg')">
+                        <div class="photo-placeholder"><img src="https://res.cloudinary.com/dxupqwg5l/image/upload/v1762975972/ivan/IMG_0367_k02v10.jpg" alt=""></div>
+                    </div>
+                    <div class="photo" onclick="openModal('https://res.cloudinary.com/dxupqwg5l/image/upload/v1762978587/ivan/IMG_2310-min_rqaiye.png')">
+                        <div class="photo-placeholder"><img src="https://res.cloudinary.com/dxupqwg5l/image/upload/v1762978587/ivan/IMG_2310-min_rqaiye.png" alt=""></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -259,6 +320,35 @@
     </div>
 
     <script>
+        const imageUrls = [
+            'https://res.cloudinary.com/dxupqwg5l/image/upload/v1762976655/ivan/IMG_2377_1_srpqyy.png',
+            'https://res.cloudinary.com/dxupqwg5l/image/upload/v1762975980/ivan/IMG_0586_sdcgmj.jpg',
+            'https://res.cloudinary.com/dxupqwg5l/image/upload/v1762975979/ivan/IMG_3141_u7arp4.jpg',
+            'https://res.cloudinary.com/dxupqwg5l/image/upload/v1762975972/ivan/IMG_3139_gylvlg.jpg',
+            'https://res.cloudinary.com/dxupqwg5l/image/upload/v1762975972/ivan/IMG_0367_k02v10.jpg',
+            'https://res.cloudinary.com/dxupqwg5l/image/upload/v1762978587/ivan/IMG_2310-min_rqaiye.png'
+        ];
+
+        let loadedImages = 0;
+        const totalImages = imageUrls.length;
+
+        function imageLoaded() {
+            loadedImages++;
+            if (loadedImages === totalImages) {
+                setTimeout(() => {
+                    document.getElementById('preloader').classList.add('hidden');
+                    document.getElementById('mainContent').classList.add('visible');
+                }, 300);
+            }
+        }
+
+        imageUrls.forEach(url => {
+            const img = new Image();
+            img.onload = imageLoaded;
+            img.onerror = imageLoaded;
+            img.src = url;
+        });
+
         function openModal(imageSrc) {
             const modal = document.getElementById('imageModal');
             const modalImg = document.getElementById('modalImage');
